@@ -1,11 +1,13 @@
+package com.brunoloo.foro_app_java.datatypes;
+
 public class DTUsuario {
     private String nickname;
     private String nombre;
     private String email;
+    private String bibliografia;
     private String urlImagen;
     
-    public DTUsuario() { // constructor vacío
-    }
+    public DTUsuario(){} // constructor vacío
 
     public DTUsuario(String nickname, String nombre, String email, String urlImagen) { // constructor con parámetros
         this.nickname = nickname;
@@ -38,6 +40,14 @@ public class DTUsuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getBibliografia() {
+        return bibliografia;
+    }
+
+    public void setBibliografia(String bibliografia) {
+        this.bibliografia = bibliografia;
     }
 
     public String getUrlImagen() {
