@@ -1,14 +1,14 @@
 package com.brunoloo.foro_app_java.datatypes;
 
-public class DTFecha {
+public class TFecha {
     private int dia;
     private int mes;
     private int anio;
     
     
-    public DTFecha(){} // Constructor vacío
+    public TFecha(){} // Constructor vacío
 
-    public DTFecha(int dia, int mes, int anio) { // Constructor con parámetros
+    public TFecha(int dia, int mes, int anio) { // Constructor con parámetros
         this.dia = dia;
         this.mes = mes;
         this.anio = anio;

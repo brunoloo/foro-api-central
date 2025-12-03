@@ -15,6 +15,7 @@ public class Main {
             public void run() {
                 try {
                     createAndShow_mainFrame();
+                    System.out.println("Aplicación iniciada correctamente.");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

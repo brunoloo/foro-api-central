@@ -8,7 +8,7 @@ A aquellos usuarios que naveguen sin registrarse, podrán acceder a los diferent
 # visión
 La plataforma [nombre] será un espacio web orientado a la libre expresión y el intercambio de ideas entre usuarios. Su propósito es ofrecer un entorno simple, accesible y centrado en la conversación, donde las personas puedan debatir, opinar y compartir contenido de forma organizada y respetuosa.
 
-Para utilizar las funcionalidades disponibles, los usuarios deberán registrarse proporcionando un nickname único dentro de la plataforma, junto con su correo electrónico y contraseña. El nickname será la principal forma de identificación pública del usuario, no siendo necesario un identificador numérico adicional. De cada usuario interesa conocer su nickname, su correo electrónico, la fecha en la que se registra y, opcionalmente, una breve biografía o descripción personal.
+Para utilizar las funcionalidades disponibles, los usuarios deberán registrarse proporcionando un nickname único dentro de la plataforma, junto con su nombre, correo electrónico y contraseña; el nickname será único dentro del sistema. De manera opcional podrá agregar una descripción y foto de portada.
 
 La plataforma organiza sus contenidos en categorías, cada una representando un área temática general. Cada categoría posee un nombre y una descripción. Los usuarios pueden iniciar conversaciones creando temas, que consisten en un título, un contenido inicial y la categoría en la que se publican. De cada tema interesa registrar su título, su contenido, su creador, la fecha de creación y su categoría.
 

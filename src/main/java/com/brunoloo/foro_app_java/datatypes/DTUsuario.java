@@ -4,7 +4,9 @@ public class DTUsuario {
     private String nickname;
     private String nombre;
     private String email;
-    private String bibliografia;
+    private String password;
+    private String desc;
+    private TFecha fechaRegistro;
     private String urlImagen;
     
     public DTUsuario(){} // constructor vacío
@@ -38,16 +40,32 @@ public class DTUsuario {
         return email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public TFecha getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(TFecha fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getBibliografia() {
-        return bibliografia;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setBibliografia(String bibliografia) {
-        this.bibliografia = bibliografia;
+    public void setDesc(String bibliografia) {
+        this.desc = bibliografia;
     }
 
     public String getUrlImagen() {
