@@ -1,3 +1,5 @@
+package com.brunoloo.foroapp.datatypes;
+
 public class DTUsuario {
     private String nickname;
     private String nombre;
