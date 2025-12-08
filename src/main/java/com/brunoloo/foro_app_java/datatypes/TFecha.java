@@ -34,4 +34,10 @@ public class TFecha {
     public void setAnio(int anio) {
         this.anio = anio;
     }
+
+    @Override
+    public String toString() {
+        return dia + "/" + mes + "/" + anio;
+    }
+
 }
