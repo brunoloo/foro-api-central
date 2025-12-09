@@ -4,7 +4,6 @@ public class DTUsuario {
     private String nickname;
     private String nombre;
     private String email;
-    private String password;
     private String desc;
     private TFecha fechaRegistro;
     private String urlImagen;
@@ -38,14 +37,6 @@ public class DTUsuario {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public TFecha getFechaRegistro() {
