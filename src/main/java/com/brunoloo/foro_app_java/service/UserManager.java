@@ -1,19 +1,20 @@
 package com.brunoloo.foro_app_java.service;
 
 import java.util.Collection;
+import java.util.ArrayList; 
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
+// Clase para gestionar los usuarios en memoria
 public class UserManager {
     private Map<String, Usuario> usuariosNickname;
-    private Map<String, Usuario> usuariosEmail;
 
     private static UserManager instancia = null;
 
     // Constructor privado para el singleton
     private UserManager() {
         usuariosNickname = new HashMap<>();
-        usuariosEmail = new HashMap<>();
     }
 
     // Método para obtener la instancia única del UserManager
@@ -31,9 +32,26 @@ public class UserManager {
    */
     public void addUsuario(Usuario user) {
     String nickname = user.getNickname();
-    String email = user.getEmail();
-    usuariosNickname.put(nickname, user);
-    usuariosEmail.put(email, user);
+    usuariosNickname.put(nickname.toLowerCase(), user); // guardo los nickname en minúsculas para evitar problemas de mayúsculas/minúsculas
   }
   
+  /**
+   * Obtiene un usuario por su nickname.
+
+   * @param nick el nickname del usuario
+   * @return el usuario correspondiente o null si no existe
+   */
+  public Usuario obtenerUsuario(String nick) {
+    return usuariosNickname.get(nick.toLowerCase());
+  }
+
+    /**
+     * Obtiene todos los usuarios registrados.
+    
+     * @return una colección de todos los usuarios
+     */  
+    public List<Usuario> obtenerUsuarios() {
+        // Convertir la colección de valores del mapa a una lista y retornarla
+        return new ArrayList<>(usuariosNickname.values());
+    }
 }

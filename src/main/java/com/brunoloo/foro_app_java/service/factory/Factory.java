@@ -20,7 +20,7 @@ public class Factory {
 
    * @return IControladorUsuario
    */
-    public IControladorUsuario geIControladorUsuario() {
+    public IControladorUsuario getIControladorUsuario() {
         return ControladorUsuario.getInstance();
     }
 
