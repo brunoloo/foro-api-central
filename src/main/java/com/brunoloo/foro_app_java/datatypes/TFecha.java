@@ -1,12 +1,20 @@
 package com.brunoloo.foro_app_java.datatypes;
 
+import java.time.LocalDate;
+
 public class TFecha {
     private int dia;
     private int mes;
     private int anio;
     
     
-    public TFecha(){} // Constructor vacío
+    public TFecha() {
+    LocalDate hoy = LocalDate.now();
+    this.dia = hoy.getDayOfMonth();
+    this.mes = hoy.getMonthValue();
+    this.anio = hoy.getYear();
+    } // Constructor por defecto (fecha actual)   
+
 
     public TFecha(int dia, int mes, int anio) { // Constructor con parámetros
         this.dia = dia;
