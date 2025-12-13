@@ -1,16 +1,19 @@
 package com.brunoloo.foro_app_java.controller;
 
 import com.brunoloo.foro_app_java.datatypes.DTUsuario;
+
 import com.brunoloo.foro_app_java.exceptions.UsuarioNoExisteException;
 import com.brunoloo.foro_app_java.exceptions.UsuarioRepetidoException;
-import com.brunoloo.foro_app_java.service.UserManager;
+import com.brunoloo.foro_app_java.exceptions.InvalidEmailException;
 import com.brunoloo.foro_app_java.service.Usuario;
+import com.brunoloo.foro_app_java.service.Manager.UserManager;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 // acá se implementaran los casos de uso de Usuario 
 
@@ -28,22 +31,21 @@ public class ControladorUsuario implements IControladorUsuario {
     return instancia;
   }
 
-  public void registrarUsuario(
-      String nickname, 
-      String nombre, 
-      String email, 
-      String password, 
-      String descripcion, 
-      String urlImagen
-  ) throws UsuarioRepetidoException {
+  @Override
+  public void registrarUsuario(String nickname, String nombre, String email, String password, String descripcion, String urlImagen
+) throws UsuarioRepetidoException, InvalidEmailException {
       UserManager usrManager = UserManager.getInstancia();
-      Usuario existente = usrManager.obtenerUsuario(nickname);
-      if (existente != null) {
-          throw new UsuarioRepetidoException("El usuario: " + nickname + ", ya existe.");
+      if(usrManager.existeUsuario(nickname)){
+        throw new UsuarioRepetidoException("El usuario: " + nickname + ", ya existe.");
+      } else if(!esEmailValido(email)){
+        throw new InvalidEmailException("Debe ingresar un email válido.");
+      } else {
+        Usuario nuevoUsr = new Usuario(nickname, nombre, email, password, descripcion, urlImagen);
+        usrManager.addUsuario(nuevoUsr);
       }
-      existente = new Usuario(nickname, nombre, email, password, descripcion, urlImagen);
   };
 
+  @Override
   public DTUsuario verInfoUsuario(String nick) throws UsuarioNoExisteException { // nickname, nombre, email, desc, urlImagen
     UserManager manejadorusr = UserManager.getInstancia();
     Usuario usr = manejadorusr.obtenerUsuario(nick);
@@ -71,6 +73,7 @@ public class ControladorUsuario implements IControladorUsuario {
     }
   }
   
+  @Override
   public List<DTUsuario> listarUsuarios() {
     UserManager manejadorUsr = UserManager.getInstancia();
     List<Usuario> usuarios = manejadorUsr.obtenerUsuarios();
@@ -96,6 +99,7 @@ public class ControladorUsuario implements IControladorUsuario {
     return resultado;
   }
 
+  @Override
   public Set<String> obtenerSeguidores(String nick) throws UsuarioNoExisteException {
     UserManager manejadorUsr = UserManager.getInstancia();
     Usuario usr = manejadorUsr.obtenerUsuario(nick);
@@ -113,6 +117,7 @@ public class ControladorUsuario implements IControladorUsuario {
     return resultado;
   }
 
+  @Override
   public Set<String> obtenerSeguidos(String nick) throws UsuarioNoExisteException {
     UserManager manejadorUsr = UserManager.getInstancia();
     Usuario usr = manejadorUsr.obtenerUsuario(nick);
@@ -130,5 +135,27 @@ public class ControladorUsuario implements IControladorUsuario {
 
     return resultado;
 }
+
+
+  // Funciones axuiliares
+  private boolean esEmailValido(String email) {
+    if (email == null || email.isEmpty()) {
+        return false;
+    }
+    
+    // Esta expresión regular verifica:
+    // 1. Caracteres permitidos al inicio
+    // 2. Un arroba (@)
+    // 3. Dominio
+    // 4. Un punto (.)
+    // 5. Extensión de al menos 2 letras (ej: .com, .uy, .org)
+    String regex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+    
+    Pattern pattern = Pattern.compile(regex);
+    Matcher matcher = pattern.matcher(email);
+    
+    return matcher.matches();
+  }
+
 
 }

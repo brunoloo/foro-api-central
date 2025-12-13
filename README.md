@@ -5,6 +5,7 @@ Permitirá que sus usuarios registrados abran temas de conversación dentro de c
 
 A aquellos usuarios que naveguen sin registrarse, podrán acceder a los diferentes contenidos de la plataforma sin la posibilidad de participar de forma activa. Las interacciones entre usuarios requerirán un registro.
 
+
 # visión
 La plataforma [nombre] es un espacio web orientado a la libre expresión y el intercambio de ideas entre usuarios. Su propósito es ofrecer un entorno simple, accesible y centrado en la conversación, donde las personas puedan debatir, opinar y compartir contenido de forma organizada.
 
@@ -23,8 +24,8 @@ La plataforma permite que los usuarios expresen su opinión sobre los contenidos
 Cada usuario puede realizar una única reacción por tema o comentario, con la posibilidad de quitar o cambiar su reacción posteriormente.
 De cada reacción interesa saber el tipo de reacción, autor y tema o comentario que pertenece.
 
-# políticas del sistema 
 
+# políticas del sistema 
 1. [Categoría]
    • Los usuarios autores de categorías obtendrán el rol de moderador de la categoría creada. 
    • Los usuarios que participen (creando temas o comentarios), obtendrán el rol de participante.
@@ -58,6 +59,100 @@ De cada reacción interesa saber el tipo de reacción, autor y tema o comentario
      estado [visible]. Ésta será evaluada por un administrador del sistema.
    • El autor de un tema [inactivo] podrá realizar una apelación para que vuelva a 
      estado [activo]. Ésta será evaluada por un administrador del sistema. 
+
+
+# Actores 
+1. Administrador del sistema: utiliza solamente la estación de trabajo, esto implica que no puede iniciar sesión en la aplicación web
+
+2. Visitante: usuario que accede a la aplicación web sin haber iniciado sesión como un usuario registrado. 
+
+3. Usuario: usuario registrado que inició sesión en el sistema y no la cerró. Los usuarios registrados disponen de funcionalidades que no tienen los visitantes.
+
+
+# Requerimientos funcionales
+[Estación_de_trabajo]
+[Usuario]
+Caso de uso: Registrar usuario 
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desea registrar un nuevo usuario. El sistema solicita nickname, nombre, email, contraseña, confirmación de contraseña y (opcionalmente) una biografía. El sistema verifica que nickname y email sean únicos, y que la contraseña coincida con la confirmación de contraseña. En caso de éxito, se crea el usuario; de lo contrario, el administrador puede reingresar los datos o cancelar el caso de uso. [DONE]
+
+Caso de uso: Consulta de usuarios
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desea consultar el perfil de un usuario. El sistema lista todos los usuarios y el administrador selecciona uno, el sistema muestra sus datos personales, junto con las listas de sus seguidores, seguidos, categorías y temas creados por el usuario. [TODO]
+
+Caso de uso: Modificar usuario
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desea modificar los datos de un usuario. El sistema lista todos los usuarios y el administrador selecciona uno, el sistema permite editar su nombre, biografía, o contraseña, cuando termina la edición el sistema guarda los cambios. (El nickname y email no se modifican por integridad). [TODO]
+
+Caso de uso: Eliminar usuario
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desdea eliminar un usuario. El sistema lista los usuarios y el administrador selecciona uno, el sistema pide confirmación del usuario a eliminar. Al aceptar, el usuario y toda su información vinculada se eliminan del sistema, en caso de cancelar, finaliza el caso de uso. [TODO]
+
+[Categoría]
+Caso de uso: Registrar categoría
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desea crear una nueva categoría. El sistema solicita título, descripción y etiqueta (una o varias de las existentes). El sistema verifica que el título sea único, que se haya proporcionado descripción y al menos una de las etiquetas. En caso de éxito se crea la categoría en estado activa, de lo contrario, el administrador puede reingresar los datos o cancelar el caso de uso. [TODO]
+
+Caso de uso: Consulta de categorías
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desea consultar una categoría. El sistema lista todas las categorías y el administrador selecciona una, el sistema devuelve todos sus datos (título, descripción, etiquetas, contador de comentarios, estado y fecha de creación), junto con las lista de temas y usuarios que han participado mediante temas o comentarios. [TODO]
+
+Caso de uso: Modificar categoría
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desea modificar una categoría. El sistema lista todas las categorías y el administrador selecciona una, el sistema permite editar su descripción y etiquetas. Cuando termina la edición, el sistema guarda los cambios. (El título y estado no se modifican por integridad) [TODO]
+
+Caso de uso: Eliminar categoría
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desdea eliminar una categoría. El sistema lista las categorías y el administrador selecciona una, el sistema pide confirmación de la categoría a eliminar. Al aceptar, la categoría y toda su información vinculada se eliminan del sistema, en caso de cancelar, finaliza el caso de uso.[TODO]
+
+Caso de uso: Modificar estado de categoría
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desea modificar el estado de una categoría. El sistema lista las categorías y el administrador selecciona una, el sistema indica el estado actual de la categoría y despliega una lista de estados a cambiar; el administrador selecciona uno y el sistema modifica el estado de la categoría. [TODO]
+
+[Tema]
+Caso de uso: Consulta de temas
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desea consultar un tema. El sistema lista todos los temas y el administrador selecciona uno, el sistema devuelve todos sus datos (título, contenido, estado y fecha de creación), junto con la lista de comentarios y usuarios que han participado mediante comentarios. [TODO]
+
+Caso de uso: Modificar tema
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desea modificar un tema. El sistema lista todos los temas y el administrador selecciona uno, el sistema permite editar su contenido. Cuando termina la edición, el sistema guarda los cambios. (El título y estado no se modifican por integridad) [TODO]
+
+Caso de uso: Eliminar tema
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desdea eliminar un tema. El sistema lista los temas y el administrador selecciona uno, el sistema pide confirmación del tema a eliminar. Al aceptar, el tema y toda su información vinculada se eliminan del sistema, en caso de cancelar, finaliza el caso de uso.[TODO]
+
+Caso de uso: Modificar estado de tema
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desea modificar el estado de un tema. El sistema lista los temas y el administrador selecciona uno, el sistema indica el estado actual del tema y despliega una lista de estados a cambiar; el administrador selecciona uno y el sistema modifica el estado del tema. [TODO]
+
+[Comentario]
+Caso de uso: Consulta de comentario
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desea consultar un comentario. El sistema lista los usuarios y el administrador selecciona uno, el sistema lista los comentarios publicados por el usuario y el administrador selecciona uno. El sistema despliega la fecha de creación y contenido del comentario seleccionado. [TODO]
+
+Caso de uso: Eliminar comentario
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desea eliminar un comentario. El sistema lista los usuarios y el administrador selecciona uno, el sistema lista los comentarios publicados por el usuario y el administrador selecciona uno, el sistema pide confirmación del comentario a eliminar. Al aceptar, el comentario y toda su información vinculada se eliminan del sistema, en caso de cancelar, finaliza el caso de uso. [TODO]
+
+Caso de uso: Modificar estado de comentario
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desea modificar el estado de un comentario. El sistema lista los usuarios y el administrador selecciona uno, el sistema lista los comentarios publicados por el usuario y el administrador selecciona uno, el sistema indica el estado actual del comentario y despliega una lista de estados a cambiar; el administrador selecciona uno y el sistema modifica el estado del comentario. [TODO]
+
+Caso de uso: Comentarios visibles por usuario
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desea consultar los comentarios visibles de un usuario. El sistema lista los usuarios y el administrador selecciona uno, el sistema despliega los comentarios en estado visible del usuario seleccionado. [TODO]
+
+[Apelaciones]
+Caso de uso: Resolver apelación 
+Actores: Administrador del sistema
+Descripción: El caso de uso comienza cuando el administrador desea resolver una apelación. El sistema lista las apelaciones en estado pendiente y el administrador selecciona una. El sistema muestra su justificación junto con el comentario o tema que fue reportado, con la opción de aceptar o rechazar. En caso de aceptar, se modifica el estado de la apelación a aceptada y se modifica el estado del comentario o tema del cuál se apeló a visible o activo respectivamente. En caso de rechazar, se modifica el estado de la apelación a rechazada y finaliza el caso de uso. [TODO]
+
+# Aclaraciones: 
+   La eliminación implica la remoción definitiva de la entidad del sistema, mientras que la modificación de estado permite ocultar o inactivar contenido sin eliminarlo.
+
+[Servidor_web]
+
 
 # -- updates --
 A futuro, la plataforma podrá incorporar funcionalidades adicionales como marcación de temas favoritos, estadísticas de interacción, reputación de usuarios o recomendaciones personalizadas.
