@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.Collection;
 
-public class viewListaUsuarios extends JInternalFrame {
+public class viewConsultarUsuario extends JInternalFrame {
 
     // Controlador
     private IControladorUsuario controlUsr;
@@ -17,7 +17,7 @@ public class viewListaUsuarios extends JInternalFrame {
     private JTable tablaUsuarios;
     private DefaultTableModel modeloTabla;
 
-    public viewListaUsuarios(IControladorUsuario icu) {
+    public viewConsultarUsuario(IControladorUsuario icu) {
         // Inicialización básica del InternalFrame
         super("Listado de Usuarios", true, true, true, true);
         this.controlUsr = icu;

@@ -1,15 +1,15 @@
 package com.brunoloo.foro_app_java.datatypes;
 
-import com.brunoloo.foro_app_java.datatypes.enumeration.MotivoReporte;
+import com.brunoloo.foro_app_java.datatypes.enumeration.EMotivoReporte;
 
 public class DTReporte {
-    private MotivoReporte motivo;
+    private EMotivoReporte motivo;
     private TFecha fechaReporte;
 
 
     public DTReporte(){} // constructor vacío
 
-    public DTReporte(MotivoReporte motivo, TFecha fechaReporte) { // constructor con parámetros
+    public DTReporte(EMotivoReporte motivo, TFecha fechaReporte) { // constructor con parámetros
         this.motivo = motivo;
         this.fechaReporte = fechaReporte;
     }

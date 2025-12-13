@@ -2,6 +2,7 @@ package com.brunoloo.foro_app_java.controller;
 
 import com.brunoloo.foro_app_java.exceptions.UsuarioRepetidoException;
 import com.brunoloo.foro_app_java.exceptions.UsuarioNoExisteException;
+import com.brunoloo.foro_app_java.exceptions.InvalidEmailException;
 
 import java.util.Set;
 import java.util.List;
@@ -10,21 +11,14 @@ import com.brunoloo.foro_app_java.datatypes.DTUsuario;
 
 public interface IControladorUsuario {
 
-    public void registrarUsuario(
-          String nickname, 
-          String nombre, 
-          String email, 
-          String password, 
-          String descripcion, 
-          String urlImagen ) 
-          throws UsuarioRepetidoException;
+    public abstract void registrarUsuario(String nickname, String nombre, String email, String password, String descripcion, String urlImagen ) throws UsuarioRepetidoException, InvalidEmailException;
 
-    public DTUsuario verInfoUsuario(String nick) throws UsuarioNoExisteException;
+    public abstract DTUsuario verInfoUsuario(String nick) throws UsuarioNoExisteException;
 
-    public List<DTUsuario> listarUsuarios();
+    public abstract List<DTUsuario> listarUsuarios();
 
-    public Set<String> obtenerSeguidores(String nick) throws UsuarioNoExisteException;
+    public abstract Set<String> obtenerSeguidores(String nick) throws UsuarioNoExisteException;
 
-    public Set<String> obtenerSeguidos(String nick) throws UsuarioNoExisteException;
+    public abstract Set<String> obtenerSeguidos(String nick) throws UsuarioNoExisteException;
 
 }

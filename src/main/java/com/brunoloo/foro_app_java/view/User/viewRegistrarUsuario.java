@@ -151,7 +151,7 @@ public class viewRegistrarUsuario extends JInternalFrame {
     }
 
     private void registrarUsr() {
-        // 1. Obtener datos
+        // Obtener datos
         String nick = txtNickname.getText().trim();
         String nom = txtNombre.getText().trim();
         String email = txtEmail.getText().trim();
@@ -159,7 +159,7 @@ public class viewRegistrarUsuario extends JInternalFrame {
         String pass2 = new String(txtConfirmPassword.getPassword());
         String desc = txtDescripcion.getText().trim();
 
-        // 2. Validaciones básicas
+        // Validaciones básicas
         if (nick.isEmpty() || nom.isEmpty() || email.isEmpty() || pass1.isEmpty()) {
             // CAMBIO CLAVE: Usamos showInternalMessageDialog
             JOptionPane.showInternalMessageDialog(this.getDesktopPane(), 
@@ -177,7 +177,15 @@ public class viewRegistrarUsuario extends JInternalFrame {
             return;
         }
 
-        // 3. Llamar al controlador
+        if (pass1.length() < 6) {
+            JOptionPane.showInternalMessageDialog(this.getDesktopPane(), 
+                "La contraseña debe tener al menos 6 caracteres.", 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Llamar al controlador
         try {
             controlUsr.registrarUsuario(nick, nom, email, pass1, desc, ""); 
             
@@ -188,7 +196,6 @@ public class viewRegistrarUsuario extends JInternalFrame {
                 JOptionPane.INFORMATION_MESSAGE);
                 
             limpiarFormulario();
-            setVisible(false);
 
         } catch (UsuarioRepetidoException ex) {
             JOptionPane.showInternalMessageDialog(this.getDesktopPane(), 
