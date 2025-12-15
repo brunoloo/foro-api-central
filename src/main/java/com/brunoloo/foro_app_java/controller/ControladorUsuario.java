@@ -134,8 +134,18 @@ public class ControladorUsuario implements IControladorUsuario {
     }
 
     return resultado;
-}
+  }
 
+  @Override
+  public void eliminarUsuario(String nickname) throws UsuarioNoExisteException {
+    UserManager manejadorUsr = UserManager.getInstancia();
+    Usuario usr = manejadorUsr.obtenerUsuario(nickname);
+    if(!manejadorUsr.existeUsuario(usr.getNickname())){
+      throw new UsuarioNoExisteException("El usuario: " + nickname + ", no existe.");
+    } else {
+      manejadorUsr.eliminarUsuario(nickname);
+    }
+  }
 
   // Funciones axuiliares
   private boolean esEmailValido(String email) {

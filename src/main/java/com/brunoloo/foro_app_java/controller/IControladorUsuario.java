@@ -21,4 +21,5 @@ public interface IControladorUsuario {
 
     public abstract Set<String> obtenerSeguidos(String nick) throws UsuarioNoExisteException;
 
+    public abstract void eliminarUsuario(String nick) throws UsuarioNoExisteException;
 }
