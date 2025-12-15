@@ -62,4 +62,13 @@ public class UserManager {
         // Convertir la colección de valores del mapa a una lista y retornarla
         return new ArrayList<>(usuariosNickname.values());
     }
+
+    /**
+   * Remueve un usuario al sistema.
+   * @param user el usuario a remover
+   */
+    public void eliminarUsuario(String nickname){
+        usuariosNickname.remove(nickname.toLowerCase());
+    }
+
 }
